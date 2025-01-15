@@ -3,6 +3,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser');
 const todoRoutes = require('./routes/todoRoutes')
 const cors = require("cors");
+const path = require('path');
 
 
 const app = express()
@@ -12,7 +13,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'view')));
-app.use(express.static('build')); // serve static files (css & js) from the 'public' directory
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'view', 'index.html'));
