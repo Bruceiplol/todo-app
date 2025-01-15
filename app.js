@@ -12,11 +12,8 @@ const port = process.env.PORT || 8000;
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'view')));
+app.use(express.static('view'));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'view', 'index.html'));
-});
 
 app.use('/api', todoRoutes)
 
