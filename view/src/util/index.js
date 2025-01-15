@@ -1,8 +1,8 @@
-// const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL = "https://todo-app-36li.onrender.com/api";
 
 export const createTodo = async (todo) => {
   try {
-    const res = await fetch(`api/todo/create`, {
+    const res = await fetch(`${API_BASE_URL}/todo/create`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: todo,
@@ -15,7 +15,7 @@ export const createTodo = async (todo) => {
 
 export const getTodos = async () => {
   try {
-    const res = await fetch(`api/todos`);
+    const res = await fetch(`${API_BASE_URL}/todos`);
     const data = await res.json();
     return data;
   } catch (error) {
@@ -25,7 +25,7 @@ export const getTodos = async () => {
 
 export const removeTodo = async (id) => {
   try {
-    await fetch(`api/todo/${id}`, {
+    await fetch(`${API_BASE_URL}/todo/${id}`, {
       method: "DELETE",
     });
     return "deleted";
