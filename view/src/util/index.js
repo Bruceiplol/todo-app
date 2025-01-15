@@ -1,8 +1,8 @@
-const API_BASE_URL = "http://localhost:8000/api";
+// const API_BASE_URL = "http://localhost:8000/api";
 
 export const createTodo = async (todo) => {
   try {
-    const res = await fetch(`${API_BASE_URL}/todo/create`, {
+    const res = await fetch(`api/todo/create`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: todo,
@@ -15,7 +15,7 @@ export const createTodo = async (todo) => {
 
 export const getTodos = async () => {
   try {
-    const res = await fetch(`${API_BASE_URL}/todos`);
+    const res = await fetch(`api/todos`);
     const data = await res.json();
     return data;
   } catch (error) {
@@ -25,7 +25,7 @@ export const getTodos = async () => {
 
 export const removeTodo = async (id) => {
   try {
-    await fetch(`${API_BASE_URL}/todo/${id}`, {
+    await fetch(`api/todo/${id}`, {
       method: "DELETE",
     });
     return "deleted";
