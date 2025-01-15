@@ -11,10 +11,12 @@ const port = process.env.PORT || 8000;
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'view')));
+app.use(express.static('build')); // serve static files (css & js) from the 'public' directory
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+  res.sendFile(path.join(__dirname, 'view', 'index.html'));
+});
 
 app.use('/api', todoRoutes)
 
